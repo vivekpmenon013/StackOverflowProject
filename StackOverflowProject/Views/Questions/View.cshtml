@@ -1,0 +1,42 @@
+﻿
+@model StackOverflowProject.ViewModels.QuestionViewModel
+
+@{ 
+    ViewBag.Title = "View Question";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group form-row">
+            <div class="col-sm-10 offset-sm-2">
+                <h3>@Model.QuestionName</h3>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <span class="badge badge-info">@Model.Category.CategoryName</span>
+                    </div>
+                    <div class="col-sm-2">
+                        <span class="text-info">
+                            @if (Convert.ToInt32(Session["CurrentUserID"]) != Model.UserID)
+                            {
+                                @:by @Model.User.Name
+                            }
+                            else
+                            {
+                                @:by you
+                            }
+                        </span>
+                    </div>
+                    <div class="col-sm-3">
+                        <span class="text-success">by @Model.QuestionDateAndTime</span>
+                    </div>
+                    <div class="col-sm-2">
+                        <span class="badge badge-pill badge-success col-2">
+                            @Model.ViewsCount
+                        </span>
+                        Views
+                    </div>
+                </div>
+             </div>
+        </div>
+    </div>
+</div>
